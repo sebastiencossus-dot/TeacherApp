@@ -28,8 +28,7 @@ public class TeacherService {
 
     public void deleteTeacherById(int id) {
         teacherRepository.deleteById(id);
-
-    }
+     }
 
     public Teacher putById(int id, Teacher teacher) {
         Teacher currentTeacher = teacherRepository.findById(id).orElse(null);
