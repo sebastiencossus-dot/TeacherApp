@@ -23,5 +23,16 @@ public class TeacherController {
         Teacher teachers = teacherService.findTeacherById(id);
         return teachers;
     }
+
+    @DeleteMapping
+    public void eraseTeacher(@RequestParam(name = "id") int id) {
+        teacherService.deleteTeacherById(id);
+
+    }
+
+    @PutMapping
+    public Teacher modifieTeacher(@RequestParam(name = "id") int id, @RequestBody Teacher teacher) {
+       return teacherService.putById(id, teacher);
+    }
 }
 

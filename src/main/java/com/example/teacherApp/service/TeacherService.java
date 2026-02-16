@@ -6,10 +6,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service("TeacherService")
 public class TeacherService {
-    private final TeacherRepository teacherRepository;
+    private static TeacherRepository teacherRepository = null;
 
     public TeacherService(TeacherRepository teacherRepository) {
         this.teacherRepository = teacherRepository;
@@ -20,9 +21,21 @@ public class TeacherService {
     }
 
 
-    public Teacher findTeacherById(int id) {
+    public static Teacher findTeacherById(int id) {
         return teacherRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Teacher not found"));
+    }
+
+    public void deleteTeacherById(int id) {
+        teacherRepository.deleteById(id);
+
+    }
+
+    public Teacher putById(int id, Teacher teacher) {
+        Teacher currentTeacher = teacherRepository.findById(id).orElse(null);
+         currentTeacher.setFirstName(teacher.getFirstName());
+        return teacherRepository.save(currentTeacher);
+
     }
 }
 
