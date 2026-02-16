@@ -20,9 +20,8 @@ public class TeacherController {
 
     @GetMapping
     public Teacher getTeacherById(@RequestParam(name = "id") int id) {
-        Teacher teachers = teacherService.findTeacherById(id);
-        return teachers;
-    }
+        return teacherService.findTeacherById(id);
+        }
 
     @DeleteMapping
     public void eraseTeacher(@RequestParam(name = "id") int id) {

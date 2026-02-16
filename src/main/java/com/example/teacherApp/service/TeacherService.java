@@ -34,6 +34,8 @@ public class TeacherService {
     public Teacher putById(int id, Teacher teacher) {
         Teacher currentTeacher = teacherRepository.findById(id).orElse(null);
          currentTeacher.setFirstName(teacher.getFirstName());
+         currentTeacher.setLastName(teacher.getLastName());
+         currentTeacher.setEmail(teacher.getEmail());
         return teacherRepository.save(currentTeacher);
 
     }

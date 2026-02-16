@@ -2,10 +2,11 @@ package com.example.teacherApp.model;
 
 
 import jdk.jfr.DataAmount;
+import lombok.Data;
 
 import javax.persistence.*;
 
-
+@Data
 @Entity
 public class ClassRoom {
     @Id
